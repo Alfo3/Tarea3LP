@@ -1,7 +1,4 @@
 public class Planta extends Javaling{
-    static{
-        Javaling.setHpBase(65 + (int)(Math.random() * 6)); // HP base entre 65 y 70
-    }
 
     public Planta(String nombre){
         super(nombre);
@@ -11,5 +8,8 @@ public class Planta extends Javaling{
     
     @Override
     public void inicializarStats() {
+        this.setHpTotal(60 + (int)(Math.random() * 11) );
+        this.setVelocidad(1 + (int)(Math.random() * 398));
+        this.setMovimientos(new Movimiento[4]);
     }
 }

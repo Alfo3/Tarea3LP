@@ -1,8 +1,4 @@
 public class Fuego extends Javaling{    
-     static {
-        Javaling.setHpBase(60 + (int)(Math.random() * 6)); // HP base entre 60 y 65
-     }
-
     private int enLlamas; // al llegar a 3 ataques de potencia > 0 se activa el boost de ataque
 
 
@@ -21,6 +17,9 @@ public class Fuego extends Javaling{
 
     @Override
     public void inicializarStats(){
+        this.setHpTotal(55 + (int)(Math.random() * 11) );
+        this.setVelocidad(1 + (int)(Math.random() * 398));
+        this.setMovimientos(new Movimiento[4]);
     }
     
 }

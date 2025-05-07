@@ -28,6 +28,15 @@ public class main {
             }
 
         System.out.println("Has elegido un Javaling de tipo " + javaling.getClass().getSimpleName() + " llamado " + javaling.getNombre() + ".");
-
+        System.out.println("Sus stats iniciales son:");
+        System.out.println("HP Total: " + javaling.getHpTotal());
+        System.out.println("Velocidad: " + javaling.getVelocidad());
+        System.out.println("Movimientos: ");
+        for (Movimiento movimiento : javaling.getMovimientos()) {
+            if (movimiento != null) {
+                System.out.println("- " + movimiento.getNombre() + " (Potencia: " + movimiento.getPotencia() + ", Tipo: " + movimiento.getTipo() + ")");
+            }
+        }
+        scanner.close();
     }
 }

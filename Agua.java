@@ -1,8 +1,4 @@
 public class Agua extends Javaling{
-    static{
-        Javaling.setHpBase(55 + (int)(Math.random() * 6)); // HP base entre 55 y 60
-    }
-
     private boolean olaje; // True si recibio daño el turno pasado, false si no
 
     
@@ -20,6 +16,11 @@ public class Agua extends Javaling{
     }
 
     @Override
-    public void inicializarStats() {
+    public void inicializarStats() {    
+        this.setHpTotal(50 + (int)(Math.random() * 11) );
+        this.setVelocidad(1 + (int)(Math.random() * 398));
+        Movimiento[] movi = new Movimiento[4];
+        movi[0] = new Movimiento("Burbuja", 20, 100, "AGUA", false);
+        setMovimientos(movi);
     }
 }

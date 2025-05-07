@@ -1,6 +1,6 @@
 public abstract class Javaling {
     private String nombre;
-    private static int hpBase;
+    private int hpBase;
     private int velocidad;
     private int hpTotal;
     private int hpActual;
@@ -23,12 +23,12 @@ public abstract class Javaling {
         this.nombre = nombre;
     }
 
-    public static int getHpBase() {
+    public int getHpBase() {
         return hpBase;
     }
 
-    public static void setHpBase(int hpBase) {
-        Javaling.hpBase = hpBase;
+    public void setHpBase(int hpBase) {
+        this.hpBase = hpBase;
     }
 
     public int getVelocidad() {
@@ -71,10 +71,10 @@ public abstract class Javaling {
         this.tipo = tipo;
     }
 
-    public Movimiento[] getMovimientos() {
+    public Movimiento[] getMovimientos(){
         return movimientos;
     }
-
+    
     public void setMovimientos(Movimiento[] movimientos) {
         this.movimientos = movimientos;
     }

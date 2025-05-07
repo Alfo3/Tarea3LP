@@ -1,7 +1,4 @@
 public class Dragon extends Javaling{
-    static{
-        Javaling.setHpBase(70 + (int)(Math.random() * 6)); // HP base entre 70 y 75
-    }
 
     public Dragon(String nombre){
         super(nombre);
@@ -10,5 +7,8 @@ public class Dragon extends Javaling{
 
     @Override
     public void inicializarStats(){
+        this.setHpTotal(65 + (int)(Math.random() * 11) );
+        this.setVelocidad(1 + (int)(Math.random() * 398));
+        this.setMovimientos(new Movimiento[4]);
     }
 }
