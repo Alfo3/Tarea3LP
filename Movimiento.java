@@ -2,16 +2,17 @@ public class Movimiento {
     private String nombre;
     private int potencia;
     private int precision;
-    private String tipo;
+    private Javaling.Tipo tipo;
     private boolean esEstado;
 
-    public Movimiento(String nombre, int potencia, int precision, String tipo, boolean esEstado) {
+    public Movimiento(String nombre, int potencia, int precision, Javaling.Tipo tipo, boolean esEstado) {
         this.nombre = nombre;
         this.potencia = potencia;
         this.precision = precision;
         this.tipo = tipo;
         this.esEstado = esEstado;
     }
+
 
     public String getNombre() {
         return nombre;
@@ -37,11 +38,11 @@ public class Movimiento {
         this.precision = precision;
     }
 
-    public String getTipo() {
+    public Javaling.Tipo getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(Javaling.Tipo tipo) {
         this.tipo = tipo;
     }
 

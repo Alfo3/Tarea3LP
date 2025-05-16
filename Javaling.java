@@ -8,6 +8,11 @@ public abstract class Javaling {
     private Tipo tipo;
     private Movimiento[] movimientos;
 
+    public enum Tipo {
+        AGUA, FUEGO, PLANTA, DRAGON
+    }
+
+
     public abstract void inicializarStats();
 
     public Javaling(String nombre){
@@ -77,5 +82,62 @@ public abstract class Javaling {
     
     public void setMovimientos(Movimiento[] movimientos) {
         this.movimientos = movimientos;
+    }
+
+    public int atacar(Javaling objetivo, int indiceMovimiento){
+        int dano = 0;
+        Movimiento movi = movimientos[indiceMovimiento];
+        
+        dano = ((2 * getNivel() + 2) * movi.getPotencia() * (getHpBase() / 100)) / 50 + 2;
+
+        // Same Type Attack Bonus 
+        if (movi.getTipo() == getTipo()){
+            dano = (int) (dano * 1.5);
+        }
+
+        //aca va la logica de debilidades
+        if (movi.getTipo() == Tipo.AGUA && objetivo.getTipo() == Tipo.FUEGO){
+            dano = (int) (dano * 2);
+        } else if (movi.getTipo() == Tipo.FUEGO && objetivo.getTipo() == Tipo.PLANTA){
+            dano = (int) (dano * 2);
+        } else if (movi.getTipo() == Tipo.PLANTA && objetivo.getTipo() == Tipo.AGUA){
+            dano = (int) (dano * 2);
+        } else if (movi.getTipo() == Tipo.DRAGON && objetivo.getTipo() == Tipo.DRAGON){
+            dano = (int) (dano * 2);
+        }
+        //aca va la logica de resistencias
+        if (movi.getTipo() == Tipo.AGUA && objetivo.getTipo() == Tipo.PLANTA){
+            dano = (int) (dano * 0.5);
+        } else if (movi.getTipo() == Tipo.FUEGO && objetivo.getTipo() == Tipo.AGUA){
+            dano = (int) (dano * 0.5);
+        } else if (movi.getTipo() == Tipo.PLANTA && objetivo.getTipo() == Tipo.FUEGO){
+            dano = (int) (dano * 0.5);
+        } else if (movi.getTipo() == Tipo.AGUA && objetivo.getTipo() == Tipo.DRAGON){
+            dano = (int) (dano * 0.5);
+        } else if (movi.getTipo() == Tipo.FUEGO && objetivo.getTipo() == Tipo.DRAGON){
+            dano = (int) (dano * 0.5);
+        } else if (movi.getTipo() == Tipo.PLANTA && objetivo.getTipo() == Tipo.DRAGON){
+            dano = (int) (dano * 0.5);
+        }
+        //aca la logica de las habilidades de agua y fuego
+        if (getTipo() == Tipo.AGUA && this instanceof Agua){
+            Agua agua = (Agua) this;
+            if (agua.isOlaje()){
+                dano = (int) (dano * 1.15);
+            }
+        }
+
+        if (getTipo() == Tipo.FUEGO && this instanceof Fuego){
+            Fuego fuego = (Fuego) this;
+            if (fuego.getEnLlamas() >= 3){
+                dano = (int) (dano * 1.2);
+            }
+        }
+        
+        return dano;
+    }
+
+    public void subirNivel(int nivel){
+
     }
 }
